@@ -18,6 +18,7 @@
 
 package org.apache.storm.kafka.spout;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -32,7 +33,6 @@ import org.apache.storm.topology.base.BaseRichSpout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -96,6 +96,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
 
         // Spout internals
         this.collector = collector;
+
         maxRetries = kafkaSpoutConfig.getMaxTupleRetries();
         numUncommittedOffsets = 0;
 
@@ -119,6 +120,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
 
         LOG.info("Kafka Spout opened with the following configuration: {}", kafkaSpoutConfig);
         subscribeKafkaConsumer();
+        KafkaMetrics.register(context, kafkaConsumer);
     }
 
     // =========== Consumer Rebalance Listener - On the same thread as the caller ===========
