@@ -17,7 +17,7 @@ kafka_spout_deps_files = [
 ]
 
 java_library(
-    name = "kafka-spout-new-java",
+    name = "kafka-spout-java",
     srcs = glob(["**/*.java"]),
     deps = kafka_spout_deps_files,
 )
@@ -31,6 +31,6 @@ java_binary(
 genrule(
     name = "heron-kafka-spout",
     srcs = [":kafka-spout-unshaded_deploy.jar"],
-    outs = ["heron-kafka-spout.jar"],
+    outs = ["heron-kafka-spout-new.jar"],
     cmd = "cp $< $@",
 )

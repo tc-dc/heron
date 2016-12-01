@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class KafkaSpoutTuplesBuilderNamedTopics<K,V> implements KafkaSpoutTuplesBuilder<K,V> {
+    private static final long serialVersionUID = -126464708723279615L;
     private static final Logger LOG = LoggerFactory.getLogger(KafkaSpoutTuplesBuilderNamedTopics.class);
 
     private Map<String, KafkaSpoutTupleBuilder<K, V>> topicToTupleBuilders;
@@ -42,6 +43,7 @@ public class KafkaSpoutTuplesBuilderNamedTopics<K,V> implements KafkaSpoutTuples
         private Map<String, KafkaSpoutTupleBuilder<K, V>> topicToTupleBuilders;
 
         @SafeVarargs
+        @SuppressWarnings("varargs")
         public Builder(KafkaSpoutTupleBuilder<K,V>... tupleBuilders) {
             if (tupleBuilders == null || tupleBuilders.length == 0) {
                 throw new IllegalArgumentException("Must specify at last one tuple builder per topic declared in KafkaSpoutStreams");

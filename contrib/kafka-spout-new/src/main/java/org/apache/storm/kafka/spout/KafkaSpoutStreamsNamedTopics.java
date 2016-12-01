@@ -40,6 +40,7 @@ import com.google.common.base.Strings;
  * declare output streams and emmit tuples, on the appropriate stream, for all the topics specified.
  */
 public class KafkaSpoutStreamsNamedTopics implements KafkaSpoutStreams {
+    private static final long serialVersionUID = -1006712782103004961L;
     private static final Logger LOG = LoggerFactory.getLogger(KafkaSpoutStreamsNamedTopics.class);
 
     private final Map<String, KafkaSpoutStream> topicToStream;

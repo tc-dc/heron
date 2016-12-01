@@ -91,7 +91,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
     }
 
     @Override
-    public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
+    public void open(Map<String, Object> conf, TopologyContext context, SpoutOutputCollector collector) {
         initialized = false;
 
         // Spout internals
@@ -118,6 +118,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
         waitingToEmit = Collections.emptyListIterator();
 
         LOG.info("Kafka Spout opened with the following configuration: {}", kafkaSpoutConfig);
+        subscribeKafkaConsumer();
     }
 
     // =========== Consumer Rebalance Listener - On the same thread as the caller ===========
@@ -187,7 +188,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
     }
 
     private Collection<TopicPartition> toArrayList(final TopicPartition tp) {
-        return new ArrayList<TopicPartition>(1){{add(tp);}};
+        return Collections.singletonList(tp);
     }
 
     private void setAcked(TopicPartition tp, long fetchOffset) {
@@ -547,7 +548,7 @@ public class KafkaSpout<K, V> extends BaseRichSpout {
             return ackedMsgs.isEmpty();
         }
 
-        public boolean contains(ConsumerRecord record) {
+        public boolean contains(ConsumerRecord<?, ?> record) {
             return contains(new KafkaSpoutMessageId(record));
         }
 

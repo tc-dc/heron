@@ -37,8 +37,7 @@ import java.util.concurrent.TimeUnit;
  * nextRetry = Min(nextRetry, currentTime + maxDelay)
  */
 public class KafkaSpoutRetryExponentialBackoff implements KafkaSpoutRetryService {
-    private static final long serialVersionUID = -5959620764859243404L;
-
+    private static final long serialVersionUID = 6151873886488793224L;
     private static final Logger LOG = LoggerFactory.getLogger(KafkaSpoutRetryExponentialBackoff.class);
     private static final RetryEntryTimeStampComparator RETRY_ENTRY_TIME_STAMP_COMPARATOR = new RetryEntryTimeStampComparator();
 
@@ -54,6 +53,8 @@ public class KafkaSpoutRetryExponentialBackoff implements KafkaSpoutRetryService
      * Comparator ordering by timestamp 
      */
     private static class RetryEntryTimeStampComparator implements Serializable, Comparator<RetrySchedule> {
+        private static final long serialVersionUID = -5959620764859243404L;
+
         public int compare(RetrySchedule entry1, RetrySchedule entry2) {
             return Long.valueOf(entry1.nextRetryTimeNanos()).compareTo(entry2.nextRetryTimeNanos());
         }
@@ -96,6 +97,8 @@ public class KafkaSpoutRetryExponentialBackoff implements KafkaSpoutRetryService
     }
 
     public static class TimeInterval implements Serializable {
+        private static final long serialVersionUID = -7921189557105229742L;
+
         private long lengthNanos;
         private long length;
         private TimeUnit timeUnit;

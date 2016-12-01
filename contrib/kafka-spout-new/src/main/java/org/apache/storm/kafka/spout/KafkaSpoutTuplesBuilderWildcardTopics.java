@@ -23,6 +23,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import java.util.List;
 
 public class KafkaSpoutTuplesBuilderWildcardTopics<K,V> implements KafkaSpoutTuplesBuilder<K,V> {
+    private static final long serialVersionUID = -7536706932482224941L;
     private KafkaSpoutTupleBuilder<K, V> tupleBuilder;
 
     public KafkaSpoutTuplesBuilderWildcardTopics(KafkaSpoutTupleBuilder<K, V> tupleBuilder) {

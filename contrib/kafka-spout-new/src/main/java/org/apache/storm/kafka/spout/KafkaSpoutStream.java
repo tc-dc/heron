@@ -33,6 +33,7 @@ import java.util.regex.Pattern;
  * Represents the stream and output fields used by a topic
  */
 public class KafkaSpoutStream implements Serializable {
+    private static final long serialVersionUID = 6247384552472507577L;
     private static final Logger LOG = LoggerFactory.getLogger(KafkaSpoutStream.class);
 
     private final Fields outputFields;

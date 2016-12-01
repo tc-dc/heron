@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class KafkaSpoutStreamsWildcardTopics implements KafkaSpoutStreams {
+    private static final long serialVersionUID = -1874171475471877797L;
     private KafkaSpoutStream kafkaSpoutStream;
 
     public KafkaSpoutStreamsWildcardTopics(KafkaSpoutStream kafkaSpoutStream) {

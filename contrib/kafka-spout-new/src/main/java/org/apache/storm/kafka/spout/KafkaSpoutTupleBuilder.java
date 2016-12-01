@@ -30,6 +30,7 @@ import java.util.List;
  * Users must subclass this abstract class to provide their implementation. See also {@link KafkaSpoutTuplesBuilder}
  */
 public abstract class KafkaSpoutTupleBuilder<K,V> implements Serializable {
+    private static final long serialVersionUID = -1622320775461601194L;
     private List<String> topics;
 
     /**

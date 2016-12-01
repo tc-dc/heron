@@ -22,13 +22,11 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
 
 public class KafkaSpoutMessageId {
-    private static final long serialVersionUID = -5959620764859243404L;
-
     private transient TopicPartition topicPart;
     private transient long offset;
     private transient int numFails = 0;
 
-    public KafkaSpoutMessageId(ConsumerRecord consumerRecord) {
+    public KafkaSpoutMessageId(ConsumerRecord<?, ?> consumerRecord) {
         this(new TopicPartition(consumerRecord.topic(), consumerRecord.partition()), consumerRecord.offset());
     }
 

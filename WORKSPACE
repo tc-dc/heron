@@ -313,6 +313,12 @@ maven_jar(
 )
 
 maven_jar(
+  name = "org_apache_kafka_kafka_clients_new",
+  artifact = "org.apache.kafka:kafka-clients:0.10.1.0",
+)
+
+
+maven_jar(
   name = "org_scala_lang_scala_library",
   artifact = "org.scala-lang:scala-library:2.10.3",
 )
